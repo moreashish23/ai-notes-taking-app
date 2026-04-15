@@ -1,6 +1,3 @@
-// src/lib/ai/index.ts
-// Hugging Face Inference API — OpenAI-compatible router (no SDK required)
-// Model: meta-llama/Llama-3.1-8B-Instruct via Cerebras (free, fast, reliable)
 
 const HF_API_URL = "https://router.huggingface.co/v1/chat/completions";
 const HF_MODEL = "meta-llama/Llama-3.1-8B-Instruct:cerebras";
@@ -11,7 +8,7 @@ export interface AIResult {
   error?: string;
 }
 
-// ── Core fetch helper ────────────────────────────────────────────────────────
+// Core fetch helper 
 
 async function callHuggingFace(
   systemPrompt: string,
@@ -40,16 +37,13 @@ async function callHuggingFace(
       }),
     });
   } catch (networkErr) {
-    // fetch() itself threw — DNS failure, network down, etc.
     throw new Error("Network error: could not reach Hugging Face API");
   }
 
-  // Always read body as text first — avoids the
   // "Unexpected token 'I', Internal Server Error is not valid JSON" crash
   const rawBody = await res.text();
 
   if (!res.ok) {
-    // Give a meaningful message without trying to JSON.parse an HTML error page
     throw new Error(
       `Hugging Face API error ${res.status}: ${rawBody.slice(0, 200)}`
     );
@@ -71,7 +65,7 @@ async function callHuggingFace(
   return text.trim();
 }
 
-// ── summarizeNote ────────────────────────────────────────────────────────────
+// summarizeNote 
 
 export async function summarizeNote(content: string): Promise<AIResult> {
   if (!content || content.trim().length < 50) {
@@ -91,8 +85,7 @@ export async function summarizeNote(content: string): Promise<AIResult> {
   }
 }
 
-// ── improveNote ──────────────────────────────────────────────────────────────
-
+//  improveNote 
 export async function improveNote(content: string): Promise<AIResult> {
   if (!content || content.trim().length < 10) {
     return { success: false, error: "Content too short to improve" };
@@ -111,7 +104,7 @@ export async function improveNote(content: string): Promise<AIResult> {
   }
 }
 
-// ── generateTags ─────────────────────────────────────────────────────────────
+//  generateTags 
 
 export async function generateTags(title: string, content: string): Promise<AIResult> {
   if (!content && !title) {

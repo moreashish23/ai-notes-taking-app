@@ -178,7 +178,7 @@ app.post("/ai/summarize", zValidator("json", aiSchema), async (c) => {
   return c.json({ success: true, data: result.data });
 });
 
-// ── POST /api/ai/improve ───────────────────────────────────
+// POST /api/ai/improve 
 app.post("/ai/improve", zValidator("json", aiSchema), async (c) => {
   const user = await getUser(c.req.raw);
   if (!user) return c.json({ error: "Unauthorized" }, 401);
