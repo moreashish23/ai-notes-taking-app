@@ -27,7 +27,7 @@ export default function ProfilePage() {
     if (!session) return;
     fetch("/api/notes?limit=100")
       .then((r) => r.json())
-      .then((d) => { if (d.success) setNotes(d.data); })
+      .then((d) => { if (d.success) setNotes(d.data ?? []); })
       .finally(() => setLoadingNotes(false));
   }, [session]);
 
