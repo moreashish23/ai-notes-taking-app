@@ -36,7 +36,7 @@ async function callHuggingFace(
         temperature: 0.3,
       }),
     });
-  } catch (networkErr) {
+  } catch  {
     throw new Error("Network error: could not reach Hugging Face API");
   }
 

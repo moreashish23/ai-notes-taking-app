@@ -79,7 +79,9 @@ export function NoteCard({ note, onDelete, onTogglePin }: NoteCardProps) {
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Delete note?</AlertDialogTitle>
-                <AlertDialogDescription>"{note.title}" will be permanently deleted.</AlertDialogDescription>
+                <AlertDialogDescription>
+                  &ldquo;{note.title}&rdquo; will be permanently deleted.
+                </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
