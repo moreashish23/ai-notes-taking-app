@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getInitials, generateAvatarColor, formatRelativeTime } from "@/lib/utils";
-import { Mail, Calendar, FileText, Sparkles } from "lucide-react";
+import { Mail, FileText, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Note } from "@/types";
 

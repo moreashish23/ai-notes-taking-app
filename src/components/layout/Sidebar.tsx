@@ -6,7 +6,6 @@ import { LayoutDashboard, Plus, User, LogOut, Sparkles, PanelLeftClose, PanelLef
 import { cn, getInitials, generateAvatarColor } from "@/lib/utils";
 import { signOut, useSession } from "@/lib/auth/client";
 import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";

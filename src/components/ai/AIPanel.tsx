@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Sparkles, X, Copy, Check, RefreshCw } from "lucide-react";
+import { Sparkles, X, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AIButton } from "./AIButton";
 import { cn } from "@/lib/utils";
