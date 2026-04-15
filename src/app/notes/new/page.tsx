@@ -92,6 +92,7 @@ export default function NewNotePage() {
               content={content}
               onTitleChange={setTitle}
               onContentChange={setContent}
+              onTitleBlur={handleTitleBlur}
             />
           </div>
 

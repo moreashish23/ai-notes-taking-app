@@ -38,7 +38,6 @@ export default function ProfilePage() {
   const initials = getInitials(user.name);
   const avatarBg = generateAvatarColor(user.name);
   const notesWithSummary = notes.filter((n) => n.summary);
-  const notesWithTags = notes.filter((n) => n.tags.length > 0);
   const pinnedNotes = notes.filter((n) => n.isPinned);
   const allTags = [...new Set(notes.flatMap((n) => n.tags))];
 
@@ -78,6 +77,7 @@ export default function ProfilePage() {
                   { label: "Unique tags", value: allTags.length, icon: FileText },
                 ].map(({ label, value, icon: Icon }) => (
                   <div key={label} className="text-center p-3 rounded-lg bg-muted/40">
+                    <Icon className="h-4 w-4 mx-auto mb-1 text-muted-foreground" />
                     {loadingNotes ? (
                       <Skeleton className="h-6 w-8 mx-auto mb-1" />
                     ) : (

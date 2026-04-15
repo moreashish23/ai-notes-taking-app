@@ -9,10 +9,11 @@ interface NoteEditorProps {
   content: string;
   onTitleChange: (v: string) => void;
   onContentChange: (v: string) => void;
+  onTitleBlur?: () => void;
   className?: string;
 }
 
-export function NoteEditor({ title, content, onTitleChange, onContentChange, className }: NoteEditorProps) {
+export function NoteEditor({ title, content, onTitleChange, onContentChange, onTitleBlur, className }: NoteEditorProps) {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
   React.useEffect(() => {
@@ -27,6 +28,7 @@ export function NoteEditor({ title, content, onTitleChange, onContentChange, cla
       <Input
         value={title}
         onChange={(e) => onTitleChange(e.target.value)}
+        onBlur={onTitleBlur}
         placeholder="Note title…"
         className="text-xl font-semibold border-none bg-transparent px-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/50"
       />
