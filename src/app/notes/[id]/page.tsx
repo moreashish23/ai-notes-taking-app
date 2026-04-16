@@ -23,7 +23,6 @@ export default function NoteDetailPage() {
   const [saving, setSaving] = React.useState(false);
   const [dirty, setDirty] = React.useState(false);
 
-  // Fetch note
   React.useEffect(() => {
     const fetch_ = async () => {
       try {
@@ -82,7 +81,8 @@ export default function NoteDetailPage() {
     return (
       <div className="flex h-screen bg-background">
         <Sidebar />
-        <main className="flex-1 p-8 space-y-4">
+        <main className="flex-1 p-4 md:p-8 space-y-4">
+          {/* updated for responsiveness */}
           <Skeleton className="h-8 w-64" />
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-5/6" />
@@ -93,13 +93,21 @@ export default function NoteDetailPage() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-background overflow-hidden">
+      {/* updated for responsiveness */}
+
       <Sidebar />
+
       <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between h-16 px-6 border-b bg-background/80 backdrop-blur-sm shrink-0">
+
+        {/* HEADER */}
+        <header className="flex items-center justify-between h-16 px-4 md:px-6 border-b bg-background/80 backdrop-blur-sm shrink-0">
+          {/* updated for responsiveness */}
+
           <Button variant="ghost" size="sm" onClick={() => router.push("/dashboard")} className="gap-1.5 text-muted-foreground">
             <ArrowLeft className="h-4 w-4" />Dashboard
           </Button>
+
           <div className="flex items-center gap-2">
             {note && (
               <span className="text-xs text-muted-foreground hidden sm:block">
@@ -132,21 +140,32 @@ export default function NoteDetailPage() {
           </div>
         </header>
 
-        <div className="flex-1 flex overflow-hidden">
-          <div className="flex-1 overflow-y-auto scrollbar-thin p-8 max-w-3xl">
+        {/* MAIN CONTENT */}
+        <div className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
+          {/* 🔥 KEY FIX */}
+
+          {/* EDITOR */}
+          <div className="w-full flex-1 p-4 md:p-8 md:max-w-3xl">
+            {/* updated for responsiveness */}
+
             <NoteEditor
               title={title}
               content={content}
               onTitleChange={handleTitleChange}
               onContentChange={handleContentChange}
             />
+
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mt-6 pt-6 border-t">
                 {tags.map((tag) => <span key={tag} className="tag-pill">{tag}</span>)}
               </div>
             )}
           </div>
-          <aside className="w-72 border-l overflow-y-auto scrollbar-thin p-4">
+
+          {/* AI PANEL */}
+          <aside className="w-full md:w-72 border-t md:border-t-0 md:border-l p-4">
+            {/* updated for responsiveness */}
+
             <AIPanel
               noteId={id}
               title={title}
@@ -156,6 +175,7 @@ export default function NoteDetailPage() {
               onTagsUpdate={(newTags) => { setTags(newTags); setDirty(true); }}
             />
           </aside>
+
         </div>
       </main>
     </div>
