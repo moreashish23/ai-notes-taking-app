@@ -123,11 +123,11 @@ The app is built on the **Next.js App Router** with a fully typed TypeScript cod
 
 | Dashboard | Note Editor | AI Panel |
 |---|---|---|
-| ![Dashboard](https://placehold.co/400x250?text=Dashboard) | ![Editor](https://placehold.co/400x250?text=Note+Editor) | ![AI Panel](https://placehold.co/400x250?text=AI+Panel) |
+| ![Dashboard](assets/images/dashboard.png) | ![Editor](assets/images/noteeditor.png) | ![AI Panel](assets/images/aipanel.png) |
 
 | Login | Profile | Dark Mode |
 |---|---|---|
-| ![Login](https://placehold.co/400x250?text=Login+Page) | ![Profile](https://placehold.co/400x250?text=Profile+Page) | ![Dark](https://placehold.co/400x250?text=Dark+Mode) |
+| ![Login](assets/images/login.png) | ![Profile](assets/images/profile.png) | ![Dark](assets/images/darkmode.png) |
 
 ---
 
@@ -296,7 +296,7 @@ npx drizzle-kit studio
 
 ## Live Demo
 
-**[View Live App →](https://your-live-demo-url.vercel.app)**
+**[View Live App →](https://ai-notes-taking-app-zeta.vercel.app/auth/login)**
 
 > Replace this link with your actual Vercel deployment URL.
 
