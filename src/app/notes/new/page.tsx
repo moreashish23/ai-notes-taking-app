@@ -16,7 +16,6 @@ export default function NewNotePage() {
   const [saving, setSaving] = React.useState(false);
   const [savedId, setSavedId] = React.useState<string | null>(null);
 
-  // Auto-save draft to get an ID for AI features
   const saveDraft = React.useCallback(async () => {
     if (!title.trim() || savedId) return;
     try {
@@ -58,35 +57,57 @@ export default function NewNotePage() {
     }
   };
 
-  // Save draft on blur to get ID for AI
   const handleTitleBlur = () => { if (title && !savedId) saveDraft(); };
 
   const effectiveId = savedId ?? "new";
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-background overflow-hidden">
+      {/* KEEP ORIGINAL — DO NOT CHANGE */}
+
       <Sidebar />
+
       <main className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between h-16 px-6 border-b bg-background/80 backdrop-blur-sm shrink-0">
-          <Button variant="ghost" size="sm" onClick={() => router.back()} className="gap-1.5 text-muted-foreground">
+        {/* KEEP ORIGINAL */}
+
+        <header className="flex items-center justify-between h-16 px-4 md:px-6 border-b bg-background/80 backdrop-blur-sm shrink-0">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.back()}
+            className="gap-1.5 text-muted-foreground"
+          >
             <ArrowLeft className="h-4 w-4" />Back
           </Button>
+
           <div className="flex items-center gap-2">
             {tags.length > 0 && (
               <div className="hidden sm:flex gap-1">
-                {tags.slice(0, 3).map((t) => <span key={t} className="tag-pill">{t}</span>)}
+                {tags.slice(0, 3).map((t) => (
+                  <span key={t} className="tag-pill">{t}</span>
+                ))}
               </div>
             )}
+
             <Button size="sm" onClick={handleSave} disabled={saving}>
-              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+              {saving ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Save className="h-4 w-4" />
+              )}
               {saving ? "Saving…" : "Save"}
             </Button>
           </div>
         </header>
 
-        <div className="flex-1 flex overflow-hidden">
+        {/* ONLY CHANGE HERE */}
+        <div className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
+          {/* updated for responsiveness */}
+
           {/* Editor */}
-          <div className="flex-1 overflow-y-auto scrollbar-thin p-8 max-w-3xl">
+          <div className="flex-1 p-4 md:p-8 max-w-full md:max-w-3xl">
+            {/* updated for responsiveness */}
+
             <NoteEditor
               title={title}
               content={content}
@@ -97,7 +118,9 @@ export default function NewNotePage() {
           </div>
 
           {/* AI Panel */}
-          <aside className="w-72 border-l overflow-y-auto scrollbar-thin p-4">
+          <aside className="w-full md:w-72 border-t md:border-t-0 md:border-l p-4">
+            {/* updated for responsiveness */}
+
             <AIPanel
               noteId={effectiveId}
               title={title}
@@ -107,6 +130,7 @@ export default function NewNotePage() {
               onTagsUpdate={setTags}
             />
           </aside>
+
         </div>
       </main>
     </div>
