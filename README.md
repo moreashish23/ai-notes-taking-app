@@ -2,7 +2,7 @@
 
 > A full-stack AI-powered note taking app built with Next.js 14, TypeScript, PostgreSQL, and Hugging Face. Create, organize, and enhance your notes with AI-generated summaries, grammar improvements, and smart tag suggestions.
 
-![NoteAI Banner](https://placehold.co/1200x400?text=NoteAI+–+Smart+Note+Taking)
+![NoteAI Banner](assets/images/profile.png)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-blue?style=for-the-badge)](https://your-live-demo-url.vercel.app)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
