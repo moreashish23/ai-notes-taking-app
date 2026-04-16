@@ -63,12 +63,12 @@ export default function NewNotePage() {
 
   return (
     <div className="flex h-screen bg-background overflow-hidden">
-      {/* KEEP ORIGINAL — DO NOT CHANGE */}
+      
 
       <Sidebar />
 
       <main className="flex-1 flex flex-col overflow-hidden">
-        {/* KEEP ORIGINAL */}
+       
 
         <header className="flex items-center justify-between h-16 px-4 md:px-6 border-b bg-background/80 backdrop-blur-sm shrink-0">
           <Button
@@ -100,13 +100,13 @@ export default function NewNotePage() {
           </div>
         </header>
 
-        {/* ONLY CHANGE HERE */}
+     
         <div className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
-          {/* updated for responsiveness */}
+         
 
-          {/* Editor */}
+          
           <div className="flex-1 p-4 md:p-8 max-w-full md:max-w-3xl">
-            {/* updated for responsiveness */}
+            
 
             <NoteEditor
               title={title}
@@ -117,9 +117,9 @@ export default function NewNotePage() {
             />
           </div>
 
-          {/* AI Panel */}
+          
           <aside className="w-full md:w-72 border-t md:border-t-0 md:border-l p-4">
-            {/* updated for responsiveness */}
+         
 
             <AIPanel
               noteId={effectiveId}
