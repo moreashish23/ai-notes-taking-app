@@ -60,17 +60,11 @@ export default function ProfilePage() {
                 </Avatar>
                 <div>
                   <h2 className="text-xl font-semibold">{user.name}</h2>
-                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground mt-0.5 min-w-0">
-                      {/* updated for responsiveness */}
-
-                      <Mail className="h-3.5 w-3.5 flex-shrink-0" />
-                      {/* updated for responsiveness */}
-
-                      <span className="truncate">
-                        {/* updated for responsiveness */}
-                        {user.email}
-                      </span>
-
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground mt-0.5 min-w-0">
+                    <Mail className="h-3.5 w-3.5 flex-shrink-0"  />
+                    <span className="truncate">
+                      {user.email}
+                    </span>
                   </div>
                 </div>
               </div>
