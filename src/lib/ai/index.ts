@@ -1,6 +1,6 @@
 
 const HF_API_URL = "https://router.huggingface.co/v1/chat/completions";
-const HF_MODEL = "meta-llama/Llama-3.1-8B-Instruct:cerebras";
+const HF_MODEL = "openai/gpt-oss-20b";
 
 export interface AIResult {
   success: boolean;
@@ -20,6 +20,7 @@ async function callHuggingFace(
 
   let res: Response;
   try {
+    console.log("HF Key:", apiKey?.substring(0, 10));
     res = await fetch(HF_API_URL, {
       method: "POST",
       headers: {
@@ -36,6 +37,7 @@ async function callHuggingFace(
         temperature: 0.3,
       }),
     });
+    console.log(process.env.HUGGINGFACE_API_KEY);
   } catch  {
     throw new Error("Network error: could not reach Hugging Face API");
   }
@@ -56,6 +58,15 @@ async function callHuggingFace(
   } catch {
     throw new Error(`Response is not valid JSON: ${rawBody.slice(0, 200)}`);
   }
+
+  console.log("========== FULL JSON ==========");
+console.dir(json, { depth: null });
+
+console.log("========== CHOICES ==========");
+console.dir((json as any).choices, { depth: null });
+
+console.log("========== MESSAGE ==========");
+console.dir((json as any).choices?.[0]?.message, { depth: null });
 
   const text =
     (json as { choices?: { message?: { content?: string } }[] })
@@ -115,8 +126,11 @@ export async function generateTags(title: string, content: string): Promise<AIRe
     const raw = await callHuggingFace(
       'Generate 3-6 relevant lowercase tags for the note below. Return ONLY a valid JSON array of strings, nothing else. Example: ["productivity","work","goals"]',
       `Title: ${title}\n\nContent: ${content}`,
-      100
+      250
     );
+
+    console.log("RAW TAG RESPONSE:");
+    console.log(raw);
 
     // Extract JSON array even if model wraps it in extra text
     const match = raw.match(/\[[\s\S]*?\]/);
@@ -127,7 +141,14 @@ export async function generateTags(title: string, content: string): Promise<AIRe
 
     return { success: true, data: tags.slice(0, 6) };
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Failed to generate tags";
-    return { success: false, error: message };
-  }
+  console.error("Generate Tags Error:", err);
+
+  const message =
+    err instanceof Error ? err.message : "Failed to generate tags";
+
+  return {
+    success: false,
+    error: message,
+  };
+}
 }
