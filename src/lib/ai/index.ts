@@ -59,14 +59,14 @@ async function callHuggingFace(
     throw new Error(`Response is not valid JSON: ${rawBody.slice(0, 200)}`);
   }
 
-  console.log("========== FULL JSON ==========");
-console.dir(json, { depth: null });
+//   console.log("========== FULL JSON ==========");
+// console.dir(json, { depth: null });
 
-console.log("========== CHOICES ==========");
-console.dir((json as any).choices, { depth: null });
+// console.log("========== CHOICES ==========");
+// console.dir((json as any).choices, { depth: null });
 
-console.log("========== MESSAGE ==========");
-console.dir((json as any).choices?.[0]?.message, { depth: null });
+// console.log("========== MESSAGE ==========");
+// console.dir((json as any).choices?.[0]?.message, { depth: null });
 
   const text =
     (json as { choices?: { message?: { content?: string } }[] })
